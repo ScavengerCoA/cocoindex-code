@@ -24,7 +24,8 @@ async def query_codebase(
         )
 
     # Get the database connection from CocoIndex environment
-    db = coco.default_env().get_context(SQLITE_DB)
+    coco_env = await coco.default_env()
+    db = coco_env.get_context(SQLITE_DB)
 
     # Generate query embedding — use embed_query if available (supports asymmetric
     # prompting for models like nomic-embed-code that use different prefixes for
